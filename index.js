@@ -1,22 +1,32 @@
 // target display
 let display = document.querySelector(".display");
-console.log(display);
 
 // target number buttons
-let buttons = document.querySelectorAll(".btn.number");
-console.log(buttons);
+let numbers = document.querySelectorAll(".btn.number");
 
-// add event listener to buttons call function populateDisplay
-buttons.forEach((button) => {
-    button.addEventListener("click", populateDisplay);
+// target operator buttons
+let operators = document.querySelectorAll(".btn.operator");
+
+// target equal
+let equal = document.querySelector(".btn.equal");
+
+// add event listener to number buttons call function populateDisplay
+numbers.forEach((number) => {
+    number.addEventListener("click", populateDisplay);
 });
+
+// add event listener to operator buttons to call function selectOperator
+operators.forEach((operator) => {
+    operator.addEventListener("click", selectOperator);
+});
+
+// add event listener to equal button to call function equalize
+equal.addEventListener("click", equalize);
 
 // create variable for first number, second number and operator
 let firstNumber = 0;
 let secondNumber = 0;
-let operator = "/";
-
-// console.log(operate(firstNumber, secondNumber, operator));
+let operator = "";
 
 // create function operate and call relevant function based on operator
 function operate(firstNumber, secondNumber, operator) {
@@ -54,5 +64,18 @@ function divide(num1, num2) {
 
 // create a function that populate the display when number button clicks
 function populateDisplay(event) {
-    display.textContent += Number(event.target.textContent);
+    display.textContent += event.target.textContent;
+}
+
+// create function to select operator and store first number
+function selectOperator(event) {
+    operator = event.target.textContent;
+    firstNumber = Number(display.textContent);
+    display.textContent = "";
+}
+
+// create function to store second number and call function operate
+function equalize() {
+    secondNumber = Number(display.textContent);
+    display.textContent = operate(firstNumber, secondNumber, operator);
 }
