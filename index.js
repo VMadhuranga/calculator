@@ -1,9 +1,22 @@
+// target display
+let display = document.querySelector(".display");
+console.log(display);
+
+// target number buttons
+let buttons = document.querySelectorAll(".btn.number");
+console.log(buttons);
+
+// add event listener to buttons call function populateDisplay
+buttons.forEach((button) => {
+    button.addEventListener("click", populateDisplay);
+});
+
 // create variable for first number, second number and operator
-let firstNumber = 4;
-let secondNumber = 2;
+let firstNumber = 0;
+let secondNumber = 0;
 let operator = "/";
 
-console.log(operate(firstNumber, secondNumber, operator));
+// console.log(operate(firstNumber, secondNumber, operator));
 
 // create function operate and call relevant function based on operator
 function operate(firstNumber, secondNumber, operator) {
@@ -37,4 +50,9 @@ function multiply(num1, num2) {
 // divide
 function divide(num1, num2) {
     return num1 / num2;
+}
+
+// create a function that populate the display when number button clicks
+function populateDisplay(event) {
+    display.textContent += Number(event.target.textContent);
 }
