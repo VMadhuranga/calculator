@@ -10,6 +10,9 @@ let operators = document.querySelectorAll(".btn.operator");
 // target equal
 let equal = document.querySelector(".btn.equal");
 
+// target clear
+let clear = document.querySelector(".btn.clear");
+
 // add event listener to number buttons call function populateDisplay
 numbers.forEach((number) => {
     number.addEventListener("click", populateDisplay);
@@ -22,6 +25,9 @@ operators.forEach((operator) => {
 
 // add event listener to equal button to call function equalize
 equal.addEventListener("click", equalize);
+
+// add event listener to clear button
+clear.addEventListener("click", clearDisplay);
 
 // create variable for first number, second number and operator
 let firstNumber = 0;
@@ -78,4 +84,9 @@ function selectOperator(event) {
 function equalize() {
     secondNumber = Number(display.textContent);
     display.textContent = operate(firstNumber, secondNumber, operator);
+}
+
+// create function to clear display
+function clearDisplay() {
+    display.textContent = "";
 }
