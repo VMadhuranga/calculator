@@ -4,14 +4,56 @@
     padding: 0;
 }
 
-.display {
+body {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.container {
     width: 300px;
+    height: auto;
+    margin: 50px auto 0;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: gray;
+}
+
+.display {
+    width: auto;
     height: 100px;
-    margin-bottom: 20px;
+    margin: 5px;
     border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    font-size: 70px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .btn {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
+    font-size: 30px;
+    margin: 5px;
+    flex-grow: 1;
+}
+
+.btn.number {
+    background-color: bisque;
+}
+
+.btn.clear {
+    background-color: rgb(255, 125, 125);
+}
+
+.btn.delete {
+    background-color: rgb(128, 128, 255);
 }
