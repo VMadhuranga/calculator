@@ -23,9 +23,10 @@ body {
     width: auto;
     height: 100px;
     margin: 5px;
+    padding: 5px;
     border: 1px solid black;
     border-radius: 3px;
-    background-color: white;
+    background-color: rgb(214, 228, 208);
     font-size: 70px;
     display: flex;
     justify-content: end;
@@ -34,7 +35,7 @@ body {
 
 .btn-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 }
 
 .btn {
@@ -51,9 +52,9 @@ body {
 }
 
 .btn.clear {
-    background-color: rgb(255, 125, 125);
+    background-color: rgb(255, 155, 155);
 }
 
 .btn.delete {
-    background-color: rgb(128, 128, 255);
+    background-color: rgb(155, 155, 255);
 }

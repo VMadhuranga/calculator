@@ -2,12 +2,11 @@ let display = document.querySelector(".display");
 let buttons = [...document.querySelectorAll(".btn")];
 
 // create variable for first number, second number and operator
-let firstNumber = 0;
-let secondNumber = 0;
+let firstNumber = null;
+let secondNumber = null;
 let operator = "";
 
 buttons.forEach((button) => {
-
     // populate the display when number button clicks
     if (button.classList[1] === "number") {
         button.addEventListener("click", () => {
@@ -36,8 +35,8 @@ buttons.forEach((button) => {
     if (button.classList[1] === "clear") {
         button.addEventListener("click", () => {
             display.textContent = "";
-            firstNumber = 0;
-            secondNumber = 0;
+            firstNumber = null;
+            secondNumber = null;
             operator = "";
         });
     }
@@ -49,6 +48,13 @@ buttons.forEach((button) => {
         });
     }
 
+    if (button.classList[1] === "decimal") {
+        button.addEventListener("click", () => {
+            if (!display.textContent.includes(".")) {
+                display.textContent += button.textContent;
+            }
+        });
+    }
 });
 
 // create function operate and call relevant math operation functions based on operator
