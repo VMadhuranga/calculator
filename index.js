@@ -19,7 +19,7 @@ buttons.forEach((button) => {
     // select operator, store values
     if (button.classList[1] === "operator") {
         button.addEventListener("click", () => {
-            if (firstNumber !== null) {
+            if (firstNumber === null) {
                 firstNumber = Number(display.textContent);
                 operator = button.textContent;
             } else {
