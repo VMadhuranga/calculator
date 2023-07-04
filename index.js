@@ -1,24 +1,35 @@
 let display = document.querySelector(".display");
 let buttons = [...document.querySelectorAll(".btn")];
 
-// create variable for first number, second number and operator
 let firstNumber = null;
 let secondNumber = null;
+let currentOperator = "";
 let operator = "";
 
 buttons.forEach((button) => {
     // populate the display when number button clicks
     if (button.classList[1] === "number") {
         button.addEventListener("click", () => {
-            display.textContent += button.textContent;
+            if (display.textContent.length < 7) {
+                display.textContent += button.textContent;
+            }
         });
     }
 
-    // select operator and store first number
+    // select operator, store values
     if (button.classList[1] === "operator") {
         button.addEventListener("click", () => {
-            operator = button.textContent;
-            firstNumber = Number(display.textContent);
+            if (firstNumber !== null) {
+                firstNumber = Number(display.textContent);
+                operator = button.textContent;
+            } else {
+                secondNumber = Number(display.textContent);
+                currentOperator = button.textContent;
+            }
+            if (firstNumber, secondNumber) {
+                firstNumber = Number(operate(firstNumber, secondNumber, operator));
+                operator = currentOperator;
+            }
             display.textContent = "";
         });
     }
@@ -28,6 +39,18 @@ buttons.forEach((button) => {
         button.addEventListener("click", () => {
             secondNumber = Number(display.textContent);
             display.textContent = operate(firstNumber, secondNumber, operator);
+            firstNumber = null;
+            secondNumber = null;
+            operator = "";
+            currentOperator = "";
+
+            // round numbers if display text content greater than 7
+            if (display.textContent.length > 7) {
+                display.textContent = Math.round(Number(display.textContent) * 10000) / 10000;
+            }
+            if (Number(display.textContent) > 9999999) {
+                display.textContent = "ERRrrr";
+            }
         });
     }
 
@@ -37,6 +60,7 @@ buttons.forEach((button) => {
             display.textContent = "";
             firstNumber = null;
             secondNumber = null;
+            currentValue = null;
             operator = "";
         });
     }
@@ -48,9 +72,10 @@ buttons.forEach((button) => {
         });
     }
 
+    // check for decimal
     if (button.classList[1] === "decimal") {
         button.addEventListener("click", () => {
-            if (!display.textContent.includes(".")) {
+            if (!display.textContent.includes(".") && display.textContent.length >= 1) {
                 display.textContent += button.textContent;
             }
         });
@@ -84,5 +109,9 @@ function multiply(firstNumber, secondNumber) {
 }
 
 function divide(firstNumber, secondNumber) {
+    // handle divide by 0
+    if (firstNumber / secondNumber === Infinity) {
+        return display.textContent = '0';
+    }
     return firstNumber / secondNumber;
 }
