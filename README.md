@@ -1,7 +1,10 @@
-This is The Odin Project's calculator project assignment
+# Calculator
 
-This calculator can do simple calculation like good old
-pocket calculator
+This is TOP curriculums's Calculator project assignment
+
+This is the final project in the TOP curriculum's Foundation path 
+where I need to build simple calculator with basic math operation
+with all the knowledge gathered in this path
 
 Live preview: https://vmadhuranga.github.io/calculator/
 
